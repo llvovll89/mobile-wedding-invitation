@@ -20,6 +20,31 @@ body {
     font-family: 'Noto Serif KR', serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* 흑백 테마 배경 패턴 */
+    background-color: #ffffff;
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.015) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.015) 0%, transparent 50%),
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            rgba(0, 0, 0, 0.008) 10px,
+            rgba(0, 0, 0, 0.008) 11px),
+        repeating-linear-gradient(-45deg,
+            transparent,
+            transparent 10px,
+            rgba(0, 0, 0, 0.008) 10px,
+            rgba(0, 0, 0, 0.008) 11px);
+    background-size:
+        100% 100%,
+        100% 100%,
+        20px 20px,
+        20px 20px;
+    background-position:
+        0 0,
+        0 0,
+        0 0,
+        0 0;
 }
 
 .font-serif-en {
