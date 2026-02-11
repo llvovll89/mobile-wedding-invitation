@@ -1,40 +1,43 @@
 import { useState } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
+import type { Swiper as SwiperType } from 'swiper'
+
+// Swiper styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/effect-coverflow'
 
 function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const [lightboxSwiper, setLightboxSwiper] = useState<SwiperType | null>(null)
 
   // 플레이스홀더 이미지 배열 (실제로는 이미지 URL로 변경)
   const images = [
-    { id: 1, alt: '사진 1' },
-    { id: 2, alt: '사진 2' },
-    { id: 3, alt: '사진 3' },
-    { id: 4, alt: '사진 4' },
-    { id: 5, alt: '사진 5' },
-    { id: 6, alt: '사진 6' },
-    { id: 7, alt: '사진 7' },
-    { id: 8, alt: '사진 8' },
-    { id: 9, alt: '사진 9' },
-    { id: 10, alt: '사진 10' },
-    { id: 11, alt: '사진 11' },
-    { id: 12, alt: '사진 12' },
+    { id: 1, alt: '사진 1', url: '' },
+    { id: 2, alt: '사진 2', url: '' },
+    { id: 3, alt: '사진 3', url: '' },
+    { id: 4, alt: '사진 4', url: '' },
+    { id: 5, alt: '사진 5', url: '' },
+    { id: 6, alt: '사진 6', url: '' },
+    { id: 7, alt: '사진 7', url: '' },
+    { id: 8, alt: '사진 8', url: '' },
+    { id: 9, alt: '사진 9', url: '' },
+    { id: 10, alt: '사진 10', url: '' },
+    { id: 11, alt: '사진 11', url: '' },
+    { id: 12, alt: '사진 12', url: '' },
   ]
 
-  const openSlideshow = (index: number) => {
-    setCurrentSlide(index)
+  const openLightbox = (index: number) => {
     setSelectedImage(index)
+    if (lightboxSwiper) {
+      lightboxSwiper.slideTo(index)
+    }
   }
 
-  const closeSlideshow = () => {
+  const closeLightbox = () => {
     setSelectedImage(null)
-  }
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % images.length)
-  }
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length)
   }
 
   return (
@@ -43,7 +46,9 @@ function Gallery() {
         {/* 섹션 헤더 */}
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-block">
-            <p className="text-xs sm:text-sm tracking-[0.3em] sm:tracking-[0.4em] text-black uppercase font-serif-en mb-2">Our Memories</p>
+            <p className="text-xs sm:text-sm tracking-[0.3em] sm:tracking-[0.4em] text-black uppercase font-serif-en mb-2">
+              Our Memories
+            </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-black mb-4">
               Our Story
             </h2>
@@ -55,34 +60,67 @@ function Gallery() {
           </div>
         </div>
 
-        {/* 갤러리 그리드 */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-          {images.map((image, index) => (
-            <div
-              key={image.id}
-              onClick={() => openSlideshow(index)}
-              className="group relative aspect-square bg-gradient-to-br from-white to-[#fafafa] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-black/20 hover:border-black/50 transition-all duration-500 hover:scale-[1.02] cursor-pointer"
-            >
-              {/* 플레이스홀더 컨텐츠 */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center space-y-2 group-hover:scale-110 transition-transform duration-500">
-                  <div className="text-3xl sm:text-4xl opacity-40 group-hover:opacity-70 transition-opacity">
-                    📷
+        {/* Swiper Carousel */}
+        <div className="mb-8">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            effect="coverflow"
+            coverflowEffect={{
+              rotate: 10,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: false,
+            }}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
+            className="gallery-swiper"
+          >
+            {images.map((image, index) => (
+              <SwiperSlide key={image.id}>
+                <div
+                  onClick={() => openLightbox(index)}
+                  className="group relative aspect-square bg-gradient-to-br from-white to-[#fafafa] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl border border-black/20 hover:border-black/50 transition-all duration-500 cursor-pointer"
+                >
+                  {/* 플레이스홀더 컨텐츠 */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center space-y-2 group-hover:scale-110 transition-transform duration-500">
+                      <div className="text-4xl sm:text-5xl opacity-40 group-hover:opacity-70 transition-opacity">
+                        📷
+                      </div>
+                      <p className="text-black text-xs sm:text-sm font-light">
+                        {image.alt}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-black text-xs sm:text-sm font-light">{image.alt}</p>
+
+                  {/* 호버 오버레이 */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  {/* 확대 아이콘 */}
+                  <div className="absolute top-3 right-3 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-sm">🔍</span>
+                  </div>
                 </div>
-              </div>
-
-              {/* 호버 오버레이 */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-              {/* 테두리 효과 */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-black to-transparent"></div>
-                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-black to-transparent"></div>
-              </div>
-            </div>
-          ))}
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         {/* 하단 메시지 */}
@@ -95,86 +133,100 @@ function Gallery() {
           </div>
         </div>
 
-        {/* 슬라이드쇼 모달 */}
+        {/* Lightbox Modal */}
         {selectedImage !== null && (
           <div
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
-            onClick={closeSlideshow}
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+            onClick={closeLightbox}
           >
             {/* 닫기 버튼 */}
             <button
-              onClick={closeSlideshow}
-              className="absolute top-4 right-4 text-white text-3xl sm:text-4xl hover:text-gray-300 transition-colors z-10 w-12 h-12 flex items-center justify-center"
+              onClick={closeLightbox}
+              className="fixed top-4 right-4 text-white text-3xl sm:text-4xl hover:text-gray-300 transition-colors z-10 w-12 h-12 flex items-center justify-center"
+              aria-label="닫기"
             >
               ✕
             </button>
 
-            {/* 이전 버튼 */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                prevSlide()
-              }}
-              className="absolute left-4 text-white text-3xl sm:text-4xl hover:text-gray-300 transition-colors z-10 w-12 h-12 flex items-center justify-center"
-            >
-              ‹
-            </button>
-
-            {/* 이미지 영역 */}
+            {/* Lightbox Swiper */}
             <div
-              className="w-full max-w-4xl px-16 sm:px-20"
+              className="w-full max-w-4xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="bg-gradient-to-br from-white to-[#fafafa] rounded-2xl p-8 sm:p-12 border border-black/30 shadow-2xl">
-                <div className="aspect-square bg-gradient-to-br from-[#f5f5f5] to-[#fafafa] rounded-xl flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="text-6xl sm:text-8xl">📷</div>
-                    <p className="text-black text-lg sm:text-xl font-light">{images[currentSlide].alt}</p>
-                    <p className="text-gray-700 text-sm">이미지를 추가하세요</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* 이미지 카운터 */}
-              <div className="text-center mt-4 text-white text-sm">
-                {currentSlide + 1} / {images.length}
-              </div>
-            </div>
-
-            {/* 다음 버튼 */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                nextSlide()
-              }}
-              className="absolute right-4 text-white text-3xl sm:text-4xl hover:text-gray-300 transition-colors z-10 w-12 h-12 flex items-center justify-center"
-            >
-              ›
-            </button>
-
-            {/* 썸네일 리스트 */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 overflow-x-auto max-w-full px-4">
-              {images.map((image, index) => (
-                <button
-                  key={image.id}
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    setCurrentSlide(index)
-                  }}
-                  className={`w-12 h-12 sm:w-16 sm:h-16 rounded-lg flex-shrink-0 transition-all duration-300 ${currentSlide === index
-                      ? 'ring-2 ring-white scale-110'
-                      : 'opacity-50 hover:opacity-100'
-                    }`}
-                >
-                  <div className="w-full h-full bg-gradient-to-br from-white to-[#fafafa] rounded-lg flex items-center justify-center border border-black/20">
-                    <span className="text-lg sm:text-2xl">📷</span>
-                  </div>
-                </button>
-              ))}
+              <Swiper
+                modules={[Navigation, Pagination]}
+                initialSlide={selectedImage}
+                navigation
+                pagination={{ clickable: true }}
+                onSwiper={setLightboxSwiper}
+                className="lightbox-swiper"
+              >
+                {images.map((image) => (
+                  <SwiperSlide key={image.id}>
+                    <div className="flex items-center justify-center p-4">
+                      <div className="bg-gradient-to-br from-white to-[#fafafa] rounded-2xl p-8 sm:p-12 border border-black/30 shadow-2xl w-full">
+                        <div className="aspect-square bg-gradient-to-br from-[#f5f5f5] to-[#fafafa] rounded-xl flex items-center justify-center">
+                          <div className="text-center space-y-4">
+                            <div className="text-6xl sm:text-8xl">📷</div>
+                            <p className="text-black text-lg sm:text-xl font-light">
+                              {image.alt}
+                            </p>
+                            <p className="text-gray-700 text-sm">
+                              이미지를 추가하세요
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </div>
         )}
       </div>
+
+      {/* Custom Swiper Styles */}
+      <style>{`
+        .gallery-swiper .swiper-button-next,
+        .gallery-swiper .swiper-button-prev {
+          color: #000;
+          background: rgba(255, 255, 255, 0.9);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-swiper .swiper-button-next:after,
+        .gallery-swiper .swiper-button-prev:after {
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .gallery-swiper .swiper-pagination-bullet {
+          background: #000;
+          opacity: 0.3;
+        }
+
+        .gallery-swiper .swiper-pagination-bullet-active {
+          opacity: 1;
+        }
+
+        .lightbox-swiper .swiper-button-next,
+        .lightbox-swiper .swiper-button-prev {
+          color: #fff;
+        }
+
+        .lightbox-swiper .swiper-button-next:after,
+        .lightbox-swiper .swiper-button-prev:after {
+          font-size: 32px;
+        }
+
+        .lightbox-swiper .swiper-pagination-bullet {
+          background: #fff;
+        }
+      `}</style>
     </section>
   )
 }

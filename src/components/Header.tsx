@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Sparkles, Flower2, ChevronDown } from 'lucide-react'
 
 function Header() {
   const [dDay, setDDay] = useState(0)
@@ -39,7 +40,9 @@ function Header() {
       <div className="relative text-center space-y-6 sm:space-y-8 z-10 max-w-2xl mx-auto">
         {/* 장식 아이콘 */}
         <div className="animate-fadeInUp opacity-0" style={{ animationDelay: '0.1s' }}>
-          <div className="text-3xl sm:text-4xl mb-2">✨</div>
+          <div className="flex justify-center mb-2">
+            <Sparkles className="w-8 h-8 sm:w-10 sm:h-10 text-black" strokeWidth={1.5} />
+          </div>
         </div>
 
         {/* 서브 타이틀 */}
@@ -89,8 +92,9 @@ function Header() {
 
         {/* 초대 메시지 */}
         <div className="max-w-md mx-auto pt-6 sm:pt-8 animate-fadeInUp opacity-0 px-4" style={{ animationDelay: '0.6s' }}>
-          <div className="bg-white/50 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-xl border border-black/15">
-            <p className="text-xs sm:text-sm leading-relaxed sm:leading-loose text-gray-700 font-light">
+          <div className="group relative bg-gradient-to-br from-white/70 via-white/60 to-gray-50/50 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-black/15 hover:border-black/25 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+            <div className="absolute inset-0 bg-gradient-to-br from-black/5 to-transparent opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity duration-500"></div>
+            <p className="relative text-xs sm:text-sm leading-relaxed sm:leading-loose text-gray-700 font-light">
               저희 두 사람이 사랑으로 하나되는 날,
               <br />
               소중한 분들을 모시고
@@ -107,22 +111,14 @@ function Header() {
 
         {/* 장식 요소 */}
         <div className="animate-fadeInUp opacity-0" style={{ animationDelay: '0.7s' }}>
-          <div className="text-2xl sm:text-3xl">🌸</div>
+          <div className="flex justify-center">
+            <Flower2 className="w-7 h-7 sm:w-8 sm:h-8 text-black" strokeWidth={1.5} />
+          </div>
         </div>
 
         {/* 스크롤 인디케이터 */}
         <div className="pt-8 sm:pt-12 animate-bounce">
-          <svg
-            className="w-5 h-5 sm:w-6 sm:h-6 mx-auto text-black"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
+          <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 mx-auto text-black" strokeWidth={2} />
         </div>
       </div>
     </header>
