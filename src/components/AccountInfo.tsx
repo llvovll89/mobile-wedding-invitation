@@ -17,7 +17,7 @@ function AccountInfo() {
   const groomAccounts: AccountData[] = [
     {
       role: '신랑',
-      name: '김건호',
+      name: 'xxx',
       bank: '카카오뱅크',
       account: '3333-00-0000000',
       kakaoPayLink: 'https://qr.kakaopay.com/example-groom'
@@ -39,7 +39,7 @@ function AccountInfo() {
   const brideAccounts: AccountData[] = [
     {
       role: '신부',
-      name: '김서희',
+      name: 'xxx',
       bank: '토스뱅크',
       account: '1000-0000-0000',
       kakaoPayLink: 'https://qr.kakaopay.com/example-bride'

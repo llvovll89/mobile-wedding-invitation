@@ -30,7 +30,7 @@ function CoupleInfo() {
 
               <div>
                 <p className="text-xs sm:text-sm text-black mb-2 tracking-wide">GROOM</p>
-                <h3 className="text-2xl sm:text-3xl font-light text-black mb-4">김건호</h3>
+                <h3 className="text-2xl sm:text-3xl font-light text-black mb-4">xxx</h3>
               </div>
 
               <div className="space-y-2 text-xs sm:text-sm text-gray-700">
@@ -73,7 +73,7 @@ function CoupleInfo() {
 
               <div>
                 <p className="text-xs sm:text-sm text-black mb-2 tracking-wide">BRIDE</p>
-                <h3 className="text-2xl sm:text-3xl font-light text-black mb-4">김서희</h3>
+                <h3 className="text-2xl sm:text-3xl font-light text-black mb-4">xxx</h3>
               </div>
 
               <div className="space-y-2 text-xs sm:text-sm text-gray-700">

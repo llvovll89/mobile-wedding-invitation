@@ -117,3 +117,172 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
+/* ============================================ */
+/* TEMPLATE 2: Rose Garden (로즈 가든)          */
+/* ============================================ */
+
+html[data-theme="2"] body {
+    background-color: #fff5f7;
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(190, 24, 93, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(219, 39, 119, 0.03) 0%, transparent 50%),
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            rgba(190, 24, 93, 0.005) 10px,
+            rgba(190, 24, 93, 0.005) 11px),
+        repeating-linear-gradient(-45deg,
+            transparent,
+            transparent 10px,
+            rgba(190, 24, 93, 0.005) 10px,
+            rgba(190, 24, 93, 0.005) 11px);
+}
+
+html[data-theme="2"] header {
+    background: linear-gradient(to bottom right, #fff5f7, #fce7f3, #fdf2f8) !important;
+}
+
+html[data-theme="2"] section {
+    background: linear-gradient(to bottom, #fce7f3, #fff5f7) !important;
+}
+
+html[data-theme="2"] .text-black {
+    color: #9d174d;
+}
+
+html[data-theme="2"] .text-gray-700 {
+    color: #be185d;
+}
+
+html[data-theme="2"] .bg-black {
+    background-color: #be185d !important;
+}
+
+html[data-theme="2"] .text-gradient {
+    background: linear-gradient(135deg, #be185d 0%, #db2777 50%, #be185d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+html[data-theme="2"] .bg-black\/10 {
+    background-color: rgba(190, 24, 93, 0.1) !important;
+}
+
+html[data-theme="2"] .bg-gradient-to-r.from-black\/10,
+html[data-theme="2"] .bg-gradient-to-r.from-black\/10.to-gray-700\/10 {
+    background: rgba(190, 24, 93, 0.1) !important;
+}
+
+html[data-theme="2"] section .rounded-3xl {
+    background: linear-gradient(to bottom right, #fdf2f8, rgba(252, 231, 243, 0.95), rgba(255, 245, 247, 0.85)) !important;
+    border-color: rgba(190, 24, 93, 0.15) !important;
+}
+
+html[data-theme="2"] section .rounded-2xl {
+    background: linear-gradient(to bottom right, #fdf2f8, rgba(252, 231, 243, 0.9)) !important;
+    border-color: rgba(190, 24, 93, 0.12) !important;
+}
+
+html[data-theme="2"] .bg-white\/60,
+html[data-theme="2"] .bg-white\/70,
+html[data-theme="2"] .bg-white\/80,
+html[data-theme="2"] .bg-white\/50 {
+    background-color: rgba(253, 242, 248, 0.7) !important;
+}
+
+html[data-theme="2"] .bg-white {
+    background-color: #fdf2f8 !important;
+}
+
+html[data-theme="2"] .animate-sparkle {
+    background-color: #be185d !important;
+}
+
+/* ============================================ */
+/* TEMPLATE 3: Evening Elegance (이브닝 엘레강스) */
+/* ============================================ */
+
+html[data-theme="3"] body {
+    background-color: #1e3a5f;
+    background-image:
+        radial-gradient(circle at 25% 25%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(201, 168, 76, 0.05) 0%, transparent 50%),
+        repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            rgba(201, 168, 76, 0.015) 10px,
+            rgba(201, 168, 76, 0.015) 11px),
+        repeating-linear-gradient(-45deg,
+            transparent,
+            transparent 10px,
+            rgba(201, 168, 76, 0.015) 10px,
+            rgba(201, 168, 76, 0.015) 11px);
+}
+
+html[data-theme="3"] header {
+    background: linear-gradient(to bottom right, #1e3a5f, #162d4a, #0f2340) !important;
+}
+
+html[data-theme="3"] section {
+    background: linear-gradient(to bottom, #0f2340, #1e3a5f) !important;
+}
+
+html[data-theme="3"] .text-black {
+    color: #f0e6c8;
+}
+
+html[data-theme="3"] .text-gray-700 {
+    color: #c9a84c;
+}
+
+html[data-theme="3"] .bg-black {
+    background-color: #c9a84c !important;
+}
+
+html[data-theme="3"] .text-gradient {
+    background: linear-gradient(135deg, #c9a84c 0%, #e9d18a 50%, #c9a84c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+html[data-theme="3"] .bg-black\/10 {
+    background-color: rgba(201, 168, 76, 0.15) !important;
+}
+
+html[data-theme="3"] .bg-gradient-to-r.from-black\/10,
+html[data-theme="3"] .bg-gradient-to-r.from-black\/10.to-gray-700\/10 {
+    background: rgba(201, 168, 76, 0.15) !important;
+}
+
+html[data-theme="3"] section .rounded-3xl {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)) !important;
+    border-color: rgba(201, 168, 76, 0.3) !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4) !important;
+}
+
+html[data-theme="3"] section .rounded-2xl {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03)) !important;
+    border-color: rgba(201, 168, 76, 0.2) !important;
+}
+
+html[data-theme="3"] .bg-white\/60,
+html[data-theme="3"] .bg-white\/70,
+html[data-theme="3"] .bg-white\/80,
+html[data-theme="3"] .bg-white\/50 {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+html[data-theme="3"] .bg-white {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+html[data-theme="3"] .animate-sparkle {
+    background-color: #c9a84c !important;
+}
+
+html[data-theme="3"] .shadow-2xl {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5) !important;
+}

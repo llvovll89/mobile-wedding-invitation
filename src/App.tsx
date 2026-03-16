@@ -1,47 +1,49 @@
+import { useEffect } from 'react'
 import './App.css'
-import Header from './components/Header'
-import CoupleInfo from './components/CoupleInfo'
-import Gallery from './components/Gallery'
-import EventInfo from './components/EventInfo'
-import Share from './components/Share'
-import AccountInfo from './components/AccountInfo'
-import Guestbook from './components/Guestbook'
-import MusicPlayer from './components/MusicPlayer'
-import AnimatedSection from './components/AnimatedSection'
+import TemplatePicker from './components/TemplatePicker'
+import Template1 from './templates/Template1'
+import Template2 from './templates/Template2'
+import Template3 from './templates/Template3'
 
 function App() {
-  return (
-    <div className="min-h-screen bg-white">
-      <AnimatedSection variant="fadeIn">
-        <Header />
-      </AnimatedSection>
+  const params = new URLSearchParams(window.location.search)
+  const templateId = params.get('t')
+  const validTemplate = templateId && ['1', '2', '3'].includes(templateId)
 
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <CoupleInfo />
-      </AnimatedSection>
+  useEffect(() => {
+    if (validTemplate) {
+      document.documentElement.setAttribute('data-theme', templateId!)
+    } else {
+      document.documentElement.removeAttribute('data-theme')
+    }
+    return () => {
+      document.documentElement.removeAttribute('data-theme')
+    }
+  }, [validTemplate, templateId])
 
-      <AnimatedSection variant="slideUp" delay={0.2}>
-        <Gallery />
-      </AnimatedSection>
+  if (!validTemplate) {
+    return <TemplatePicker />
+  }
 
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <EventInfo />
-      </AnimatedSection>
-
-      <AnimatedSection variant="scale" delay={0.1}>
-        <Guestbook />
-      </AnimatedSection>
-
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <Share />
-      </AnimatedSection>
-
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <AccountInfo />
-      </AnimatedSection>
-
-      <MusicPlayer />
+  const backButton = (
+    <div className="fixed top-3 left-3 z-50">
+      <button
+        onClick={() => (window.location.href = '/')}
+        className="flex items-center gap-1.5 px-3 py-1.5 bg-white/80 backdrop-blur-sm border border-black/20 rounded-full text-xs shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+        style={{ color: '#000' }}
+      >
+        ← 템플릿 선택
+      </button>
     </div>
+  )
+
+  return (
+    <>
+      {backButton}
+      {templateId === '1' && <Template1 />}
+      {templateId === '2' && <Template2 />}
+      {templateId === '3' && <Template3 />}
+    </>
   )
 }
 

@@ -12,8 +12,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'og/thumbnail.webp'],
       manifest: {
-        name: '김건호 ♥ 김서희 결혼합니다',
-        short_name: '건호♥서희 결혼식',
+        name: '모바일 청첩장 템플릿',
+        short_name: '청첩장 템플릿',
         description: '따뜻한 마음으로 저희 두 사람의 소중한 시작을 함께 해주세요',
         theme_color: '#000000',
         background_color: '#ffffff',
