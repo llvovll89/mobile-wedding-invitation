@@ -7,69 +7,38 @@ import AccountInfo from '../components/AccountInfo'
 import Guestbook from '../components/Guestbook'
 import MusicPlayer from '../components/MusicPlayer'
 import AnimatedSection from '../components/AnimatedSection'
+import type { InvitationData } from '../types/invitation'
+
+interface Template3Props {
+  data: InvitationData
+}
 
 function GoldDivider() {
   return (
-    <div
-      className="flex items-center justify-center py-8"
-      style={{ backgroundColor: '#0f2340' }}
-    >
-      <div
-        className="w-20 h-[1px]"
-        style={{ background: 'linear-gradient(to right, transparent, rgba(201,168,76,0.5))' }}
-      ></div>
+    <div className="flex items-center justify-center py-8" style={{ backgroundColor: '#0f2340' }}>
+      <div className="w-20 h-[1px]" style={{ background: 'linear-gradient(to right, transparent, rgba(201,168,76,0.5))' }}></div>
       <span className="mx-3 text-sm" style={{ color: '#c9a84c' }}>◆</span>
-      <div
-        className="w-20 h-[1px]"
-        style={{ background: 'linear-gradient(to left, transparent, rgba(201,168,76,0.5))' }}
-      ></div>
+      <div className="w-20 h-[1px]" style={{ background: 'linear-gradient(to left, transparent, rgba(201,168,76,0.5))' }}></div>
     </div>
   )
 }
 
-function Template3() {
+function Template3({ data }: Template3Props) {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#0f2340' }}>
-      <AnimatedSection variant="fadeIn">
-        <Header3 />
-      </AnimatedSection>
-
+      <AnimatedSection variant="fadeIn"><Header3 data={data} /></AnimatedSection>
       <GoldDivider />
-
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <CoupleInfo />
-      </AnimatedSection>
-
+      <AnimatedSection variant="slideUp" delay={0.1}><CoupleInfo data={data} /></AnimatedSection>
       <GoldDivider />
-
-      <AnimatedSection variant="slideUp" delay={0.2}>
-        <Gallery />
-      </AnimatedSection>
-
+      <AnimatedSection variant="slideUp" delay={0.2}><Gallery /></AnimatedSection>
       <GoldDivider />
-
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <EventInfo />
-      </AnimatedSection>
-
+      <AnimatedSection variant="slideUp" delay={0.1}><EventInfo data={data} /></AnimatedSection>
       <GoldDivider />
-
-      <AnimatedSection variant="scale" delay={0.1}>
-        <Guestbook />
-      </AnimatedSection>
-
+      <AnimatedSection variant="scale" delay={0.1}><Guestbook /></AnimatedSection>
       <GoldDivider />
-
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <Share />
-      </AnimatedSection>
-
+      <AnimatedSection variant="slideUp" delay={0.1}><Share /></AnimatedSection>
       <GoldDivider />
-
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <AccountInfo />
-      </AnimatedSection>
-
+      <AnimatedSection variant="slideUp" delay={0.1}><AccountInfo data={data} /></AnimatedSection>
       <MusicPlayer />
     </div>
   )

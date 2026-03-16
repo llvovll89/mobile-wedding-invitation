@@ -7,6 +7,11 @@ import AccountInfo from '../components/AccountInfo'
 import Guestbook from '../components/Guestbook'
 import MusicPlayer from '../components/MusicPlayer'
 import AnimatedSection from '../components/AnimatedSection'
+import type { InvitationData } from '../types/invitation'
+
+interface Template2Props {
+  data: InvitationData
+}
 
 function FloralDivider() {
   return (
@@ -22,49 +27,22 @@ function FloralDivider() {
   )
 }
 
-function Template2() {
+function Template2({ data }: Template2Props) {
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#fff5f7' }}>
-      <AnimatedSection variant="fadeIn">
-        <Header2 />
-      </AnimatedSection>
-
+      <AnimatedSection variant="fadeIn"><Header2 data={data} /></AnimatedSection>
       <FloralDivider />
-
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <CoupleInfo />
-      </AnimatedSection>
-
+      <AnimatedSection variant="slideUp" delay={0.1}><CoupleInfo data={data} /></AnimatedSection>
       <FloralDivider />
-
-      <AnimatedSection variant="slideUp" delay={0.2}>
-        <Gallery />
-      </AnimatedSection>
-
+      <AnimatedSection variant="slideUp" delay={0.2}><Gallery /></AnimatedSection>
       <FloralDivider />
-
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <EventInfo />
-      </AnimatedSection>
-
+      <AnimatedSection variant="slideUp" delay={0.1}><EventInfo data={data} /></AnimatedSection>
       <FloralDivider />
-
-      <AnimatedSection variant="scale" delay={0.1}>
-        <Guestbook />
-      </AnimatedSection>
-
+      <AnimatedSection variant="scale" delay={0.1}><Guestbook /></AnimatedSection>
       <FloralDivider />
-
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <Share />
-      </AnimatedSection>
-
+      <AnimatedSection variant="slideUp" delay={0.1}><Share /></AnimatedSection>
       <FloralDivider />
-
-      <AnimatedSection variant="slideUp" delay={0.1}>
-        <AccountInfo />
-      </AnimatedSection>
-
+      <AnimatedSection variant="slideUp" delay={0.1}><AccountInfo data={data} /></AnimatedSection>
       <MusicPlayer />
     </div>
   )
